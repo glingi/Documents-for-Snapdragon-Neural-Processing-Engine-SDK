@@ -26,3 +26,60 @@ $ python3.6 get-pip.py
 // Install additional packages with python3.6
 $ python3.6 -m pip install <pkgs>
 
+
+
+
+// Run the following commands to download and convert a pre-trained inception_v3 example in TensorFlow format:
+$python ./models/inception_v3/scripts/setup_inceptionv3.py -a ./temp-assets-cache -d
+
+INFO: Downloading inception_v3 TensorFlow model...
+--2022-12-14 11:21:52--  https://storage.googleapis.com/download.tensorflow.org/models/inception_v3_2016_08_28_frozen.pb.tar.gz
+Resolving storage.googleapis.com (storage.googleapis.com)... 34.64.4.80, 34.64.4.48, 34.64.4.16, ...
+Connecting to storage.googleapis.com (storage.googleapis.com)|34.64.4.80|:443... connected.
+HTTP request sent, awaiting response... 304 Not Modified
+File './temp-assets-cache/inception_v3_2016_08_28_frozen.pb.tar.gz' not modified on server. Omitting download.
+
+INFO: Extracting TensorFlow model
+INFO: Optimizing for inference Inception v3 using /usr/local/lib/python3.8/dist-packages/tensorflow/python/tools/optimize_for_inference.py
+      Please wait. It could take a while...
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/tools/strip_unused_lib.py:88: extract_sub_graph (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.graph_util.extract_sub_graph`
+W1214 11:21:56.907628 140332877129536 deprecation.py:345] From /usr/local/lib/python3.6/dist-packages/tensorflow/python/tools/strip_unused_lib.py:88: extract_sub_graph (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.graph_util.extract_sub_graph`
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/tools/optimize_for_inference_lib.py:117: remove_training_nodes (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.graph_util.remove_training_nodes`
+W1214 11:21:57.159862 140332877129536 deprecation.py:345] From /usr/local/lib/python3.6/dist-packages/tensorflow/python/tools/optimize_for_inference_lib.py:117: remove_training_nodes (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.graph_util.remove_training_nodes`
+INFO: Optimizing for inference succeeded (inception_v3_2016_08_28_frozen_opt.pb).
+INFO: Creating SNPE inception_v3 raw data
+Traceback (most recent call last):
+  File "/home/snpe-1.68.0.3932/models/inception_v3/scripts/create_inceptionv3_raws.py", line 10, in <module>
+    from PIL import Image
+ModuleNotFoundError: No module named 'PIL'
+INFO: Creating image list data files
+/home/snpe-1.68.0.3932/models/inception_v3/data/cropped/raw_list.txt created listing 4 files.
+/home/snpe-1.68.0.3932/models/inception_v3/data/target_raw_list.txt created listing 4 files.
+INFO: Converting inception_v3_2016_08_28_frozen_opt.pb to SNPE DLC format
+2022-12-14 11:22:00.859057: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-12-14 11:22:01.805996: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 46725 MB memory:  -> device: 0, name: NVIDIA RTX A6000, pci bus id: 0000:01:00.0, compute capability: 8.6
+2022-12-14 11:22:01.806720: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 46725 MB memory:  -> device: 1, name: NVIDIA RTX A6000, pci bus id: 0000:41:00.0, compute capability: 8.6
+2022-12-14 11:22:02.638635: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 46725 MB memory:  -> device: 0, name: NVIDIA RTX A6000, pci bus id: 0000:01:00.0, compute capability: 8.6
+2022-12-14 11:22:02.638960: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 46725 MB memory:  -> device: 1, name: NVIDIA RTX A6000, pci bus id: 0000:41:00.0, compute capability: 8.6
+2022-12-14 11:22:02.657584: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 46725 MB memory:  -> device: 0, name: NVIDIA RTX A6000, pci bus id: 0000:01:00.0, compute capability: 8.6
+2022-12-14 11:22:02.657899: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 46725 MB memory:  -> device: 1, name: NVIDIA RTX A6000, pci bus id: 0000:41:00.0, compute capability: 8.6
+2022-12-14 11:22:04.742427: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8500
+2022-12-14 11:22:05.380309: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2022-12-14 11:22:05,725 - 214 - INFO - INFO_ALL_BUILDING_NETWORK: 
+    ==============================================================
+    Building Network
+    ==============================================================
+2022-12-14 11:22:06,446 - 214 - INFO - Resolving static sub-graphs in network...
+2022-12-14 11:22:06,554 - 214 - INFO - Resolving static sub-graphs in network, complete.
+2022-12-14 11:22:07,513 - 214 - INFO - INFO_DLC_SAVE_LOCATION: Saving model at /home/snpe-1.68.0.3932/models/inception_v3/dlc/inception_v3.dlc
+2022-12-14 11:22:08,535 - 214 - INFO - INFO_CONVERSION_SUCCESS: Conversion completed successfully
+INFO: Setup inception_v3 completed.
