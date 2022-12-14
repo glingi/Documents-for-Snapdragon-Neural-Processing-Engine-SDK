@@ -1,0 +1,28 @@
+References
+
+[1] https://developer.qualcomm.com/software/qualcomm-neural-processing-sdk/getting-started
+[2] https://developer.qualcomm.com/sites/default/files/docs/snpe/setup.html
+
+
+System Configuration
+
+- Ubuntu 20.04
+- Docker Container
+- NVIDIA CUDA 11.7
+- NVIDIA CUDNN
+
+
+1. Install Python3.6 on Ubuntu 20.04
+
+$ apt-get install software-properties-common
+$ add-apt-repository ppa:jonathonf/python-3.6
+$ apt-get install python3.6
+$ apt-get install python3.6-dev
+
+// Download get-pip.py
+$ wget https://bootstrap.pypa.io/pip/3.6/get-pip.py
+$ python3.6 get-pip.py
+
+// Install additional packages with python3.6
+$ python3.6 -m pip install <pkgs>
+
